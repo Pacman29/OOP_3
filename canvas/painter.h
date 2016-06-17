@@ -3,17 +3,29 @@
 #include "base_painter.h"
 #include "painter_error.h"
 #include <QPixmap>
+class painterImpl : public base_painterImpl
+{
+public:
+    void draw_line(QPixmap* pix, point start, point end) override;
+    void clear_scene(QPixmap* pix) override;
+private:
+};
 
 class painter :public base_painter
 {
 public:
-    painter(QPixmap* pix);
-    ~painter();
-    void draw_line(point start, point end) override;
-    void clear_scene() override;
-    void pen_color(int R, int G, int B, int a) override;
-    void pen_thickness(int Th) override;
+    painter(QPixmap* pix) : base_painter(new painterImpl), _pix(pix){}
 
+    void draw_line(point start, point end) override
+    {
+        this->pntrImpl->draw_line(_pix,start,end);
+    }
+    void clear_scene() override
+    {
+        this->pntrImpl->clear_scene(_pix);
+    }
+private:
+    QPixmap* _pix;
 };
 
 #endif // PAINTER_H

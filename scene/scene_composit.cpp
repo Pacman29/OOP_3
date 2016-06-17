@@ -7,10 +7,11 @@ scene_composit::scene_composit()
 
 void scene_composit::load_model(const char *file_name)
 {
-    loader ld;
+    base_loader* ld = new file_loader;
     model *tmp = new model();
-    ld.Load(*tmp,file_name);
+    ld->Load(*tmp,file_name);
     models.add(tmp);
+    delete ld;
 }
 
 void scene_composit::delete_model(size_t index)

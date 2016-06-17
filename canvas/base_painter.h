@@ -2,19 +2,30 @@
 #define CANVAS_H
 #include "point/point.h"
 #include <QPainter>
+class base_painterImpl;
+
 class base_painter
 {
 public:
+    base_painter(base_painterImpl* pntr) : pntrImpl(pntr){}
+    virtual ~base_painter()
+    {
+        delete pntrImpl;
+    }
+
     virtual void draw_line(point start, point end) = 0;
     virtual void clear_scene() = 0;
-    virtual void pen_color(int R, int G, int B, int a) = 0;
-    virtual void pen_thickness(int Th) = 0;
 protected:
-    QColor _clr;
-    size_t _th;
-    QPixmap* _pix;
-    size_t _centre_x;
-    size_t _centre_y;
+    base_painterImpl* pntrImpl;
+};
+
+class base_painterImpl
+{
+public:
+    virtual ~base_painterImpl(){}
+
+    virtual void draw_line(QPixmap* pix, point start, point end) = 0;
+    virtual void clear_scene(QPixmap* pix) = 0;
 };
 
 #endif // CANVAS_H
