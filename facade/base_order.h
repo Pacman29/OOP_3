@@ -4,7 +4,7 @@
 class base_order
 {
 public:
-    virtual void Execute(scene_composit *elm, int elm_id) = 0;
+    virtual void Execute(scene_composit *elm, size_t elm_id) = 0;
 };
 #endif // BASE_ORDER
 

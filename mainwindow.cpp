@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pix = new QPixmap(ui->canvas->size());
     on_add_camera_btn_clicked();
     pix->fill();
+    ui->camera_comboBox->setCurrentIndex(0);
     ui->canvas->setPixmap(*pix);
 }
 

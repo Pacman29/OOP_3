@@ -1,11 +1,9 @@
 #include "geometric_transformations.h"
 #include "QDebug"
 
-transform_matrix::rotationOX::rotationOX(double angle)
+transform_matrix::rotationOX::rotationOX(double angle) :
+    matrix<double>(4,4)
 {
-    this->set_row_count(4);
-    this->set_column_count(4);
-
     double cos_alpha = cos(angle);
     double sin_alpha = sin(angle);
 
@@ -30,11 +28,9 @@ transform_matrix::rotationOX::rotationOX(double angle)
     (*this)[3][3] = 1;
 }
 
-transform_matrix::rotationOY::rotationOY(double angle)
+transform_matrix::rotationOY::rotationOY(double angle) :
+    matrix<double>(4,4)
 {
-    this->set_row_count(4);
-    this->set_column_count(4);
-
     double cos_alpha = cos(angle);
     double sin_alpha = sin(angle);
 
@@ -59,11 +55,9 @@ transform_matrix::rotationOY::rotationOY(double angle)
     (*this)[3][3] = 1;
 }
 
-transform_matrix::rotationOZ::rotationOZ(double angle)
+transform_matrix::rotationOZ::rotationOZ(double angle) :
+    matrix<double>(4,4)
 {
-    this->set_row_count(4);
-    this->set_column_count(4);
-
     double cos_alpha = cos(angle);
     double sin_alpha = sin(angle);
 
@@ -88,11 +82,9 @@ transform_matrix::rotationOZ::rotationOZ(double angle)
     (*this)[3][3] = 1;
 }
 
-transform_matrix::rotation::rotation(double x, double y, double z, double angle)
+transform_matrix::rotation::rotation(double x, double y, double z, double angle) :
+    matrix<double>(4,4)
 {
-    this->set_row_count(4);
-    this->set_column_count(4);
-
     double cos_alpha = cos(angle);
     double sin_alpha = sin(angle);
 
@@ -117,11 +109,9 @@ transform_matrix::rotation::rotation(double x, double y, double z, double angle)
     (*this)[3][3] = 1;
 }
 
-transform_matrix::move::move(double x, double y, double z)
+transform_matrix::move::move(double x, double y, double z) :
+    matrix<double>(4,4)
 {
-    this->set_row_count(4);
-    this->set_column_count(4);
-
     (*this)[0][0] = 1;
     (*this)[0][1] = 0;
     (*this)[0][2] = 0;
@@ -144,11 +134,9 @@ transform_matrix::move::move(double x, double y, double z)
 }
 
 
-transform_matrix::scale::scale(double s)
+transform_matrix::scale::scale(double s) :
+    matrix<double>(4,4)
 {
-    this->set_row_count(4);
-    this->set_column_count(4);
-
     (*this)[0][0] = s;
     (*this)[1][0] = 0;
     (*this)[2][0] = 0;
@@ -169,53 +157,3 @@ transform_matrix::scale::scale(double s)
     (*this)[2][3] = 0;
     (*this)[3][3] = 1;
 }
-
-//double G_vector::calc_lenght(vector<double> vec)
-//{
-//    if(vec.length() != 4)
-//        throw vector_error::length_error();
-//    double x = vec[0];
-//    double y = vec[1];
-//    double z = vec[2];
-//    return sqrt(x*x + y*y + z*z);
-//}
-
-//double G_vector::scalar(vector<double>  vec1, vector<double>  vec2)
-//{
-//    if(vec1.length() != 4 || vec2.length() != 4)
-//        throw vector_error::length_error();
-
-//    return vec1[0]*vec2[0] + vec1[1]*vec2[1] + vec1[2]*vec2[2];
-//}
-
-//double G_vector::angle(vector<double> vec1, vector<double> vec2)
-//{
-//    if(vec1.length() != 4 || vec2.length() != 4)
-//        throw vector_error::length_error();
-//    return scalar(vec1,vec2) / (calc_lenght(vec1) * calc_lenght(vec1));
-//}
-
-//vector<double> G_vector::normalize_vector(vector<double> vec)
-//{
-//    if(vec.length() != 4)
-//        throw vector_error::length_error();
-//    double norm = 1/calc_lenght(vec);
-//    for(size_t i = 0; i<vec.length()-1; ++i)
-//        vec[i] *= norm;
-//    return vec;
-//}
-
-//vector<double> G_vector::cross(vector<double> vec1, vector<double> vec2)
-//{
-//    if(vec1.length() != 4 || vec2.length() != 4)
-//        throw vector_error::length_error();
-
-//    vector<double> tmp(4);
-//    tmp[0] = vec1[2]*vec2[1] - vec1[1]*vec2[2];
-//    tmp[1] = vec1[0]*vec2[2] - vec1[2]*vec2[0];
-//    tmp[2] = vec1[1]*vec2[0] - vec1[0]*vec2[1];
-//    tmp[3] = 1;
-//    return tmp;
-//}
-
-

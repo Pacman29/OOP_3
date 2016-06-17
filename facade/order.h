@@ -18,7 +18,7 @@ public:
     }
     ~load(){}
 
-    void Execute(scene_composit *elm, int elm_id) override
+    void Execute(scene_composit *elm, size_t elm_id) override
     {
         elm->load_model(this->file_name);
     }
@@ -30,7 +30,7 @@ public:
     delete_model(){}
     ~delete_model(){}
 
-    void Execute(scene_composit *elm, int elm_id) override
+    void Execute(scene_composit *elm, size_t elm_id) override
     {
         elm->delete_model(elm_id);
     }
@@ -47,7 +47,7 @@ public:
     }
     ~draw(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->clear(this->pntr);
         elm->draw(this->pntr,elm_id);
@@ -65,7 +65,7 @@ public:
     }
     ~clear_scene(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->clear(this->pntr);
     }
@@ -78,7 +78,7 @@ public:
     add_cam(){}
     ~add_cam(){}
 
-    void Execute(scene_composit *elm, int elm_id = 0)
+    void Execute(scene_composit *elm, size_t elm_id = 0)
     {
         elm->add_cam();
     }
@@ -90,7 +90,7 @@ public:
     del_cam(){}
     ~del_cam(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->delete_camera(elm_id);
     }
@@ -104,7 +104,7 @@ public:
     scale(double d): delta(d){}
     ~scale(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::scale(delta)),elm_id);
     }
@@ -122,7 +122,7 @@ public:
     }
     ~rotate_y(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::rotationOY(delta)),elm_id);
     }
@@ -139,7 +139,7 @@ public:
     }
     ~rotate_z(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::rotationOZ(delta)),elm_id);
     }
@@ -156,7 +156,7 @@ public:
     }
     ~rotate_x(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::rotationOX(delta)),elm_id);
     }
@@ -173,7 +173,7 @@ public:
     }
     ~move_x(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::moveOX(delta)),elm_id);
     }
@@ -190,7 +190,7 @@ public:
     }
     ~move_y(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::moveOY(delta)),elm_id);
     }
@@ -207,7 +207,7 @@ public:
     }
     ~move_z(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_model(new change(transform_matrix::moveOZ(delta)),elm_id);
     }
@@ -224,7 +224,7 @@ public:
     }
     ~yaw_cam(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_camera(new camera_transformations::yaw(this->delta),elm_id);
     }
@@ -241,7 +241,7 @@ public:
     }
     ~pitch_cam(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_camera(new camera_transformations::pitch(this->delta),elm_id);
     }
@@ -258,7 +258,7 @@ public:
     }
     ~roll_cam(){}
 
-    void Execute(scene_composit *elm, int elm_id)
+    void Execute(scene_composit *elm, size_t elm_id)
     {
         elm->change_camera(new camera_transformations::roll(this->delta),elm_id);
     }
