@@ -19,6 +19,7 @@ public:
         }
         return true;
     }
+
     const char* get_error_message()
     {
         const char* msg = this->err_message;

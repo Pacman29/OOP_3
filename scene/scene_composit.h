@@ -22,7 +22,6 @@ public:
     void draw(painter *pntr, size_t index_cam);
     void clear(painter *pntr);
 private:
-    //vector<camera> cams;
     composit_object cams;
     composit_object models;
 };

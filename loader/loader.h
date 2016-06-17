@@ -12,6 +12,7 @@ public:
     
 
 private:
+    FILE *FileLoader;
     // Check_Data
     void _Open_File(const char *Name);
     size_t _Check_Load_Count_Lines();

@@ -8,8 +8,6 @@ class base_loader
 public:
     virtual bool Load(model &Unit, const char *Name) = 0;
 
-protected:
-    FILE *FileLoader;
 };
 #endif // BASE_LOADER
 
