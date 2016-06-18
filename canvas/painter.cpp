@@ -3,7 +3,7 @@
 void painterImpl::draw_line(QPixmap* pix,point start, point end)
 {
     if(pix->isNull())
-        throw painer_error::pix_null();
+        throw painter_error::pix_null();
 
     size_t _centre_x = pix->width()/2;
     size_t _centre_y = pix->height()/2;

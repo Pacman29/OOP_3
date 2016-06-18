@@ -60,7 +60,8 @@ void camera::RotationRightLeftSphere(double angle)
 
 void camera::transform(base_transformations *transform)
 {
-    ((base_camera_transformations*)transform)->execute(this);
+    if(!transform->is_visible())
+        ((base_camera_transformations*)transform)->execute(this);
 }
 
 void camera::pitch(double angle)

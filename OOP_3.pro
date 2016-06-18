@@ -31,7 +31,9 @@ SOURCES += main.cpp\
     scene/scene_composit.cpp \
     point/point_transform.cpp \
     composit_object/composit_object.cpp \
-    camera/base_camera_transformations.cpp
+    camera/base_camera_transformations.cpp \
+    vector/_iterator.cpp \
+    planner/planner.cpp
 
 HEADERS  += mainwindow.h \
     vector/vector.h \
@@ -79,7 +81,19 @@ HEADERS  += mainwindow.h \
     transformations/transformations.h \
     camera/camera_error.h \
     composit_object/composit_object.h \
-    point/point_transform.h
+    point/point_transform.h \
+    vector/base_iterator.h \
+    vector/_iterator.h \
+    vector/iterator.h \
+    vector/error_iterator.h \
+    base_manager/base_manager.h \
+    planner/planner.h \
+    managers/keeper.h \
+    managers/load_manager.h \
+    managers/draw_manager.h \
+    managers/keeper_error.h \
+    managers/model_conver_manager.h \
+    managers/camera_convert_manager.h
 
 FORMS    += mainwindow.ui
 

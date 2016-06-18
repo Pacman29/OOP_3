@@ -15,5 +15,7 @@ INPUT(
 ./release/facade.o
 ./release/scene_composit.o
 ./release/composit_object.o
+./release/base_camera_transformations.o
+./release/planner.o
 ./release/moc_mainwindow.o
 );

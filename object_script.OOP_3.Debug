@@ -15,5 +15,7 @@ INPUT(
 ./debug/facade.o
 ./debug/scene_composit.o
 ./debug/composit_object.o
+./debug/base_camera_transformations.o
+./debug/planner.o
 ./debug/moc_mainwindow.o
 );

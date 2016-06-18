@@ -47,8 +47,9 @@ void model::transform_model(matrix<double> transform)
 
 void model::transform(base_transformations *transform)
 {
-    for(size_t i = 0; i<this->_vertex.length(); ++i)
-        this->_vertex[i].transform(transform);
+    if(transform->is_visible())
+        for(size_t i = 0; i<this->_vertex.length(); ++i)
+            this->_vertex[i].transform(transform);
 }
 
 void model::init_centre()

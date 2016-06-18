@@ -10,7 +10,7 @@ public:
     {
         try
         {
-            Element.Execute(_scene,Count);
+            Element.Execute(_planner,Count);
         }
         catch(base_error& er)
         {
@@ -27,7 +27,7 @@ public:
         return msg;
     }
 private:
-    scene_composit *_scene;
+    planner *_planner;
     const char* err_message;
 };
 

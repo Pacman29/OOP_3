@@ -134,7 +134,7 @@ void vector<T>::clear()
 }
 
 template <typename T>
-bool vector<T>::isEmpty()
+bool vector<T>::isEmpty() const
 {
     return (!this->_length) ? (true):(false);
 }
@@ -179,6 +179,22 @@ template <typename T>
 bool vector<T>::operator!()
 {
     return !this->_ptr;
+}
+
+template <typename T>
+iterator<T> vector<T>::begin() const
+{
+    iterator<T> it(*this);
+    it.first();
+    return it;
+}
+
+template <typename T>
+iterator<T> vector<T>::end() const
+{
+    iterator<T> it(*this);
+    it.last();
+    return it;
 }
 
 template <typename T>

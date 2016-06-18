@@ -13,8 +13,8 @@ public:
     matrix(size_t row_count, size_t column_count);
     matrix(size_t row_count, size_t column_count, T &value);
     matrix(size_t row_count, size_t column_count, T value);
-    const size_t row_count() override   {return _row_count;}
-    const size_t column_count() override {return _column_count;}
+    const size_t& row_count() override   {return _row_count;}
+    const size_t& column_count() override {return _column_count;}
 
     void add_column(vector<T>& vec);
     void add_row(vector<T>& vec);
@@ -25,8 +25,8 @@ public:
     void set_row_count(size_t row_count);
     void set_column_count(size_t column_count);
 
-    const size_t row_count() const override   {return _row_count;}
-    const size_t column_count() const override {return _column_count;}
+    const size_t& row_count() const override   {return _row_count;}
+    const size_t& column_count() const override {return _column_count;}
 
     matrix<T>& operator=  (matrix<T>& other);
     matrix<T>& operator=  (matrix<T> &&other);

@@ -58,7 +58,9 @@ SOURCES       = main.cpp \
 		vector/g_vector.cpp \
 		facade/facade.cpp \
 		scene/scene_composit.cpp \
-		composit_object/composit_object.cpp debug/moc_mainwindow.cpp
+		composit_object/composit_object.cpp \
+		camera/base_camera_transformations.cpp \
+		planner/planner.cpp debug/moc_mainwindow.cpp
 OBJECTS       = debug/main.o \
 		debug/mainwindow.o \
 		debug/visible_object.o \
@@ -75,6 +77,8 @@ OBJECTS       = debug/main.o \
 		debug/facade.o \
 		debug/scene_composit.o \
 		debug/composit_object.o \
+		debug/base_camera_transformations.o \
+		debug/planner.o \
 		debug/moc_mainwindow.o
 
 DIST          = data.txt \
@@ -124,7 +128,19 @@ DIST          = data.txt \
 		transformations/transformations.h \
 		camera/camera_error.h \
 		composit_object/composit_object.h \
-		point/point_transform.h main.cpp \
+		point/point_transform.h \
+		vector/base_iterator.h \
+		vector/_iterator.h \
+		vector/iterator.h \
+		vector/error_iterator.h \
+		base_manager/base_manager.h \
+		planner/planner.h \
+		managers/keeper.h \
+		managers/load_manager.h \
+		managers/draw_manager.h \
+		managers/keeper_error.h \
+		managers/model_conver_manager.h \
+		managers/camera_convert_manager.h main.cpp \
 		mainwindow.cpp \
 		object/visible_object.cpp \
 		object/invisible_object.cpp \
@@ -139,7 +155,9 @@ DIST          = data.txt \
 		vector/g_vector.cpp \
 		facade/facade.cpp \
 		scene/scene_composit.cpp \
-		composit_object/composit_object.cpp
+		composit_object/composit_object.cpp \
+		camera/base_camera_transformations.cpp \
+		planner/planner.cpp
 QMAKE_TARGET  = OOP_3
 DESTDIR        = debug/ #avoid trailing-slash linebreak
 TARGET         = OOP_3.exe
@@ -178,7 +196,7 @@ dist:
 	$(ZIP) OOP_3.zip $(SOURCES) $(DIST) OOP_3.pro J:/QT/5.5/mingw492_32/mkspecs/features/spec_pre.prf J:/QT/5.5/mingw492_32/mkspecs/qdevice.pri J:/QT/5.5/mingw492_32/mkspecs/features/device_config.prf J:/QT/5.5/mingw492_32/mkspecs/qconfig.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dcore.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dcore_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dinput.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dinput_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dquick.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dquick_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dquickrenderer.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3dquickrenderer_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3drenderer.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_3drenderer_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_axbase.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_axbase_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_axcontainer.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_axcontainer_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_axserver.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_axserver_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_bluetooth.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_bluetooth_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_bootstrap_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_clucene_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_concurrent.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_concurrent_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_core.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_core_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_dbus.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_dbus_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_declarative.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_declarative_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_designer.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_designer_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_designercomponents_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_enginio.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_enginio_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_gui.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_gui_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_help.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_help_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_location.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_location_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_multimedia.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_multimedia_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_multimediawidgets.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_multimediawidgets_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_network.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_network_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_nfc.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_nfc_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_opengl.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_opengl_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_openglextensions.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_openglextensions_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_platformsupport_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_positioning.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_positioning_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_printsupport.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_printsupport_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_qml.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_qml_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_qmldevtools_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_qmltest.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_qmltest_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_quick.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_quick_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_quickparticles_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_quickwidgets.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_quickwidgets_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_script.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_script_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_scripttools.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_scripttools_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_sensors.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_sensors_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_serialport.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_serialport_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_sql.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_sql_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_svg.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_svg_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_testlib.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_testlib_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_uiplugin.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_uitools.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_uitools_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_webchannel.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_webchannel_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_webkit.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_webkit_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_webkitwidgets.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_webkitwidgets_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_websockets.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_websockets_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_widgets.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_widgets_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_winextras.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_winextras_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_xml.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_xml_private.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_xmlpatterns.pri J:/QT/5.5/mingw492_32/mkspecs/modules/qt_lib_xmlpatterns_private.pri J:/QT/5.5/mingw492_32/mkspecs/features/qt_functions.prf J:/QT/5.5/mingw492_32/mkspecs/features/qt_config.prf J:/QT/5.5/mingw492_32/mkspecs/features/win32/qt_config.prf J:/QT/5.5/mingw492_32/mkspecs/win32-g++/qmake.conf J:/QT/5.5/mingw492_32/mkspecs/features/spec_post.prf J:/QT/5.5/mingw492_32/mkspecs/features/exclusive_builds.prf J:/QT/5.5/mingw492_32/mkspecs/features/default_pre.prf J:/QT/5.5/mingw492_32/mkspecs/features/win32/default_pre.prf J:/QT/5.5/mingw492_32/mkspecs/features/resolve_config.prf J:/QT/5.5/mingw492_32/mkspecs/features/exclusive_builds_post.prf J:/QT/5.5/mingw492_32/mkspecs/features/default_post.prf J:/QT/5.5/mingw492_32/mkspecs/features/build_pass.prf J:/QT/5.5/mingw492_32/mkspecs/features/c++11.prf J:/QT/5.5/mingw492_32/mkspecs/features/win32/rtti.prf J:/QT/5.5/mingw492_32/mkspecs/features/precompile_header.prf J:/QT/5.5/mingw492_32/mkspecs/features/warn_on.prf J:/QT/5.5/mingw492_32/mkspecs/features/qt.prf J:/QT/5.5/mingw492_32/mkspecs/features/resources.prf J:/QT/5.5/mingw492_32/mkspecs/features/moc.prf J:/QT/5.5/mingw492_32/mkspecs/features/win32/opengl.prf J:/QT/5.5/mingw492_32/mkspecs/features/uic.prf J:/QT/5.5/mingw492_32/mkspecs/features/win32/windows.prf J:/QT/5.5/mingw492_32/mkspecs/features/testcase_targets.prf J:/QT/5.5/mingw492_32/mkspecs/features/exceptions.prf J:/QT/5.5/mingw492_32/mkspecs/features/yacc.prf J:/QT/5.5/mingw492_32/mkspecs/features/lex.prf OOP_3.pro J:/QT/5.5/mingw492_32/lib/qtmaind.prl J:/QT/5.5/mingw492_32/lib/Qt5Widgetsd.prl J:/QT/5.5/mingw492_32/lib/Qt5Guid.prl J:/QT/5.5/mingw492_32/lib/Qt5Cored.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug/main.o debug/mainwindow.o debug/visible_object.o debug/invisible_object.o debug/point.o debug/line.o debug/camera.o debug/geometric_transformations.o debug/model.o debug/loader.o debug/painter.o debug/graphical_sys.o debug/g_vector.o debug/facade.o debug/scene_composit.o debug/composit_object.o debug/moc_mainwindow.o
+	-$(DEL_FILE) debug/main.o debug/mainwindow.o debug/visible_object.o debug/invisible_object.o debug/point.o debug/line.o debug/camera.o debug/geometric_transformations.o debug/model.o debug/loader.o debug/painter.o debug/graphical_sys.o debug/g_vector.o debug/facade.o debug/scene_composit.o debug/composit_object.o debug/base_camera_transformations.o debug/planner.o debug/moc_mainwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -316,6 +334,7 @@ debug/moc_mainwindow.cpp: J:/QT/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		facade/order.h \
 		scene/scene_composit.h \
 		camera/base_camera_transformations.h \
+		transformations/transformations.h \
 		camera/camera.h \
 		camera/camera_error.h \
 		base_error/base_error.h \
@@ -331,6 +350,11 @@ debug/moc_mainwindow.cpp: J:/QT/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		vector/g_vector.h \
 		point/point.h \
@@ -338,10 +362,8 @@ debug/moc_mainwindow.cpp: J:/QT/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
-		transformations/transformations.h \
 		object/invisible_object.h \
 		geometric_transformations/geometric_transformations.h \
-		camera/base_camera_transformations.cpp \
 		model/model.h \
 		line/line.h \
 		line/line_error.h \
@@ -363,11 +385,15 @@ debug/moc_mainwindow.cpp: J:/QT/5.5/mingw492_32/include/QtWidgets/QMainWindow \
 		canvas/graphical_sys.h \
 		canvas/base_graphical_sys.h \
 		canvas/graphic_sys_error.h \
+		managers/keeper.h \
+		base_manager/base_manager.h \
+		managers/model_conver_manager.h \
+		managers/keeper_error.h \
 		facade/base_order.h \
 		camera/camera_transformations.h \
 		point/point_transform.h \
 		mainwindow.h
-	'J:\QT\5.5\mingw492_32\bin\moc.exe' $(DEFINES) -D__GNUC__ -DWIN32 -IJ:/QT/5.5/mingw492_32/mkspecs/win32-g++ -IC:/OOP_3/OOP_3 -IJ:/QT/5.5/mingw492_32/include -IJ:/QT/5.5/mingw492_32/include/QtWidgets -IJ:/QT/5.5/mingw492_32/include/QtGui -IJ:/QT/5.5/mingw492_32/include/QtANGLE -IJ:/QT/5.5/mingw492_32/include/QtCore mainwindow.h -o debug/moc_mainwindow.cpp
+	'J:\QT\5.5\mingw492_32\bin\moc.exe' $(DEFINES) -D__GNUC__ -DWIN32 -IJ:/QT/5.5/mingw492_32/mkspecs/win32-g++ -IC:/oop_3_2/OOP_3 -IJ:/QT/5.5/mingw492_32/include -IJ:/QT/5.5/mingw492_32/include/QtWidgets -IJ:/QT/5.5/mingw492_32/include/QtGui -IJ:/QT/5.5/mingw492_32/include/QtANGLE -IJ:/QT/5.5/mingw492_32/include/QtCore mainwindow.h -o debug/moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -509,6 +535,7 @@ debug/main.o: main.cpp mainwindow.h \
 		facade/order.h \
 		scene/scene_composit.h \
 		camera/base_camera_transformations.h \
+		transformations/transformations.h \
 		camera/camera.h \
 		camera/camera_error.h \
 		base_error/base_error.h \
@@ -524,6 +551,11 @@ debug/main.o: main.cpp mainwindow.h \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		vector/g_vector.h \
 		point/point.h \
@@ -531,10 +563,8 @@ debug/main.o: main.cpp mainwindow.h \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
-		transformations/transformations.h \
 		object/invisible_object.h \
 		geometric_transformations/geometric_transformations.h \
-		camera/base_camera_transformations.cpp \
 		model/model.h \
 		line/line.h \
 		line/line_error.h \
@@ -556,6 +586,10 @@ debug/main.o: main.cpp mainwindow.h \
 		canvas/graphical_sys.h \
 		canvas/base_graphical_sys.h \
 		canvas/graphic_sys_error.h \
+		managers/keeper.h \
+		base_manager/base_manager.h \
+		managers/model_conver_manager.h \
+		managers/keeper_error.h \
 		facade/base_order.h \
 		camera/camera_transformations.h \
 		point/point_transform.h \
@@ -688,6 +722,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		facade/order.h \
 		scene/scene_composit.h \
 		camera/base_camera_transformations.h \
+		transformations/transformations.h \
 		camera/camera.h \
 		camera/camera_error.h \
 		base_error/base_error.h \
@@ -703,6 +738,11 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		vector/g_vector.h \
 		point/point.h \
@@ -710,10 +750,8 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
-		transformations/transformations.h \
 		object/invisible_object.h \
 		geometric_transformations/geometric_transformations.h \
-		camera/base_camera_transformations.cpp \
 		model/model.h \
 		line/line.h \
 		line/line_error.h \
@@ -735,6 +773,10 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		canvas/graphical_sys.h \
 		canvas/base_graphical_sys.h \
 		canvas/graphic_sys_error.h \
+		managers/keeper.h \
+		base_manager/base_manager.h \
+		managers/model_conver_manager.h \
+		managers/keeper_error.h \
 		facade/base_order.h \
 		camera/camera_transformations.h \
 		point/point_transform.h \
@@ -805,6 +847,11 @@ debug/point.o: point/point.cpp point/_point.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
@@ -833,6 +880,11 @@ debug/line.o: line/line.cpp line/line.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		point/error_point.h \
 		line/line_error.h \
 		line/base_line.h \
@@ -854,6 +906,11 @@ debug/camera.o: camera/camera.cpp camera/camera.h \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		vector/g_vector.h \
 		point/point.h \
@@ -864,7 +921,6 @@ debug/camera.o: camera/camera.cpp camera/camera.h \
 		transformations/transformations.h \
 		object/invisible_object.h \
 		geometric_transformations/geometric_transformations.h \
-		camera/base_camera_transformations.cpp \
 		camera/base_camera_transformations.h \
 		camera/camera_transformations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/camera.o camera/camera.cpp
@@ -882,6 +938,11 @@ debug/geometric_transformations.o: geometric_transformations/geometric_transform
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		point/point.h \
 		point/_point.h \
@@ -969,6 +1030,11 @@ debug/model.o: model/model.cpp model/model.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		point/error_point.h \
 		line/line.h \
 		line/line_error.h \
@@ -1062,6 +1128,11 @@ debug/loader.o: loader/loader.cpp loader/loader.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
@@ -1093,6 +1164,11 @@ debug/painter.o: canvas/painter.cpp canvas/painter.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
@@ -1209,6 +1285,11 @@ debug/graphical_sys.o: canvas/graphical_sys.cpp canvas/graphical_sys.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		point/error_point.h \
 		line/line.h \
 		line/line_error.h \
@@ -1318,17 +1399,8 @@ debug/graphical_sys.o: canvas/graphical_sys.cpp canvas/graphical_sys.h \
 		camera/base_camera.h \
 		vector/g_vector.h \
 		object/invisible_object.h \
-		camera/base_camera_transformations.cpp \
 		camera/base_camera_transformations.h \
-		canvas/graphic_sys_error.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/QDebug \
-		J:/QT/5.5/mingw492_32/include/QtCore/qdebug.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/qmap.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/qtextstream.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/qlocale.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/qvariant.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/qset.h \
-		J:/QT/5.5/mingw492_32/include/QtCore/qcontiguouscache.h
+		canvas/graphic_sys_error.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/graphical_sys.o canvas/graphical_sys.cpp
 
 debug/g_vector.o: vector/g_vector.cpp vector/g_vector.h \
@@ -1338,13 +1410,19 @@ debug/g_vector.o: vector/g_vector.cpp vector/g_vector.h \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
-		vector/_vector.cpp
+		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/g_vector.o vector/g_vector.cpp
 
 debug/facade.o: facade/facade.cpp facade/facade.h \
 		facade/order.h \
 		scene/scene_composit.h \
 		camera/base_camera_transformations.h \
+		transformations/transformations.h \
 		camera/camera.h \
 		camera/camera_error.h \
 		base_error/base_error.h \
@@ -1360,6 +1438,11 @@ debug/facade.o: facade/facade.cpp facade/facade.h \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		vector/g_vector.h \
 		point/point.h \
@@ -1367,10 +1450,8 @@ debug/facade.o: facade/facade.cpp facade/facade.h \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
-		transformations/transformations.h \
 		object/invisible_object.h \
 		geometric_transformations/geometric_transformations.h \
-		camera/base_camera_transformations.cpp \
 		model/model.h \
 		line/line.h \
 		line/line_error.h \
@@ -1474,6 +1555,10 @@ debug/facade.o: facade/facade.cpp facade/facade.h \
 		canvas/graphical_sys.h \
 		canvas/base_graphical_sys.h \
 		canvas/graphic_sys_error.h \
+		managers/keeper.h \
+		base_manager/base_manager.h \
+		managers/model_conver_manager.h \
+		managers/keeper_error.h \
 		facade/base_order.h \
 		camera/camera_transformations.h \
 		point/point_transform.h
@@ -1481,6 +1566,7 @@ debug/facade.o: facade/facade.cpp facade/facade.h \
 
 debug/scene_composit.o: scene/scene_composit.cpp scene/scene_composit.h \
 		camera/base_camera_transformations.h \
+		transformations/transformations.h \
 		camera/camera.h \
 		camera/camera_error.h \
 		base_error/base_error.h \
@@ -1496,6 +1582,11 @@ debug/scene_composit.o: scene/scene_composit.cpp scene/scene_composit.h \
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
 		matrix/_matrix.cpp \
 		vector/g_vector.h \
 		point/point.h \
@@ -1503,10 +1594,8 @@ debug/scene_composit.o: scene/scene_composit.cpp scene/scene_composit.h \
 		point/error_point.h \
 		object/visible_object.h \
 		object/base_object.h \
-		transformations/transformations.h \
 		object/invisible_object.h \
 		geometric_transformations/geometric_transformations.h \
-		camera/base_camera_transformations.cpp \
 		model/model.h \
 		line/line.h \
 		line/line_error.h \
@@ -1609,7 +1698,11 @@ debug/scene_composit.o: scene/scene_composit.cpp scene/scene_composit.h \
 		loader/loader_error.h \
 		canvas/graphical_sys.h \
 		canvas/base_graphical_sys.h \
-		canvas/graphic_sys_error.h
+		canvas/graphic_sys_error.h \
+		managers/keeper.h \
+		base_manager/base_manager.h \
+		managers/model_conver_manager.h \
+		managers/keeper_error.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/scene_composit.o scene/scene_composit.cpp
 
 debug/composit_object.o: composit_object/composit_object.cpp composit_object/composit_object.h \
@@ -1621,8 +1714,191 @@ debug/composit_object.o: composit_object/composit_object.cpp composit_object/com
 		vector/error_vector.h \
 		vector/base_error_vector.h \
 		base_error/base_error.h \
-		vector/_vector.cpp
+		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/composit_object.o composit_object/composit_object.cpp
+
+debug/base_camera_transformations.o: camera/base_camera_transformations.cpp camera/base_camera_transformations.h \
+		transformations/transformations.h \
+		camera/camera.h \
+		camera/camera_error.h \
+		base_error/base_error.h \
+		camera/base_camera.h \
+		matrix/matrix.h \
+		matrix/_matrix.h \
+		matrix/base_matrix.h \
+		matrix/error_matrix.h \
+		matrix/base_error_matrix.h \
+		vector/vector.h \
+		vector/_vector.h \
+		vector/base_vector.h \
+		vector/error_vector.h \
+		vector/base_error_vector.h \
+		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
+		matrix/_matrix.cpp \
+		vector/g_vector.h \
+		point/point.h \
+		point/_point.h \
+		point/error_point.h \
+		object/visible_object.h \
+		object/base_object.h \
+		object/invisible_object.h \
+		geometric_transformations/geometric_transformations.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/base_camera_transformations.o camera/base_camera_transformations.cpp
+
+debug/planner.o: planner/planner.cpp planner/planner.h \
+		managers/draw_manager.h \
+		base_manager/base_manager.h \
+		managers/keeper.h \
+		managers/model_conver_manager.h \
+		scene/scene_composit.h \
+		camera/base_camera_transformations.h \
+		transformations/transformations.h \
+		camera/camera.h \
+		camera/camera_error.h \
+		base_error/base_error.h \
+		camera/base_camera.h \
+		matrix/matrix.h \
+		matrix/_matrix.h \
+		matrix/base_matrix.h \
+		matrix/error_matrix.h \
+		matrix/base_error_matrix.h \
+		vector/vector.h \
+		vector/_vector.h \
+		vector/base_vector.h \
+		vector/error_vector.h \
+		vector/base_error_vector.h \
+		vector/_vector.cpp \
+		vector/iterator.h \
+		vector/_iterator.h \
+		vector/base_iterator.h \
+		vector/error_iterator.h \
+		vector/_iterator.cpp \
+		matrix/_matrix.cpp \
+		vector/g_vector.h \
+		point/point.h \
+		point/_point.h \
+		point/error_point.h \
+		object/visible_object.h \
+		object/base_object.h \
+		object/invisible_object.h \
+		geometric_transformations/geometric_transformations.h \
+		model/model.h \
+		line/line.h \
+		line/line_error.h \
+		line/base_line.h \
+		model/model_error.h \
+		model/base_model.h \
+		canvas/painter.h \
+		canvas/base_painter.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/QPainter \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpainter.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qnamespace.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qglobal.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qconfig.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qfeatures.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qsystemdetection.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qprocessordetection.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qcompilerdetection.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qtypeinfo.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qtypetraits.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qsysinfo.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qlogging.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qflags.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qbasicatomic.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_bootstrap.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qgenericatomic.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_cxx11.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_gcc.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_msvc.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_armv7.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_armv6.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_armv5.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_ia64.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_mips.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_x86.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qatomic_unix.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qglobalstatic.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qmutex.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qnumeric.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qrect.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qmargins.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qsize.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qpoint.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qscopedpointer.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpixmap.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpaintdevice.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qwindowdefs.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qobjectdefs.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qobjectdefs_impl.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qwindowdefs_win.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qcolor.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qrgb.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qstringlist.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qlist.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qalgorithms.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qiterator.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qrefcount.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qarraydata.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qbytearraylist.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qbytearray.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qstring.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qchar.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qstringbuilder.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qregexp.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qstringmatcher.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qsharedpointer.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qshareddata.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qhash.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qpair.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qsharedpointer_impl.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qobject.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qcoreevent.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qmetatype.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qvarlengtharray.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qcontainerfwd.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qisenum.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qobject_impl.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qimage.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qtransform.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qmatrix.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpolygon.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qvector.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qregion.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qdatastream.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qiodevice.h \
+		J:/QT/5.5/mingw492_32/include/QtCore/qline.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpainterpath.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpixelformat.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qtextoption.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qpen.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qbrush.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qfontinfo.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qfont.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/qfontmetrics.h \
+		canvas/painter_error.h \
+		J:/QT/5.5/mingw492_32/include/QtGui/QPixmap \
+		composit_object/composit_object.h \
+		loader/loader.h \
+		loader/base_loader.h \
+		loader/loader_error.h \
+		canvas/graphical_sys.h \
+		canvas/base_graphical_sys.h \
+		canvas/graphic_sys_error.h \
+		managers/keeper_error.h \
+		managers/load_manager.h \
+		managers/camera_convert_manager.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/planner.o planner/planner.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/moc_mainwindow.o debug/moc_mainwindow.cpp

@@ -14,6 +14,8 @@ public:
         delete GrImpl;
     }
     virtual void Draw_model(base_model &model, base_camera &cam) = 0;
+    virtual void clear_scene() = 0;
+    virtual void set_scene(base_painter& pntr) = 0;
 protected:
     base_Graphical_sys_Impl* GrImpl;
 };
@@ -23,6 +25,7 @@ class base_Graphical_sys_Impl
 public:
     virtual ~base_Graphical_sys_Impl(){}
     virtual void Draw_model(base_painter *pntr, base_model &model, base_camera &cam) = 0;
+    virtual void clear_scene(base_painter *pntr) = 0;
 };
 
 #endif // BASE_GRAPHICAL_SYS

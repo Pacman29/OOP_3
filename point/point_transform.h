@@ -3,7 +3,7 @@
 #include "transformations/transformations.h"
 #include "point/_point.h"
 #include "geometric_transformations/geometric_transformations.h"
-class point_transform : public base_transformations
+class point_transform : public visible_transformations
 {
 public:
     virtual void change_point(point* const p) = 0;

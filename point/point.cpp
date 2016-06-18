@@ -95,7 +95,8 @@ void point::set_Z(const double &z)
 
 void point::transform(base_transformations *transform)
 {
-    ((point_transform*)transform)->change_point(this);
+    if(transform->is_visible())
+        ((point_transform*)transform)->change_point(this);
 }
 
 

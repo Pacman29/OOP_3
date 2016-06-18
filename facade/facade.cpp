@@ -3,6 +3,6 @@
 facade::facade()
 {
     this->err_message = "";
-    this->_scene = new scene_composit();
+    this->_planner = new planner();
 }
 

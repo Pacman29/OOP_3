@@ -21,3 +21,9 @@ void Graphical_sysImpl::Draw_model(base_painter* pntr, base_model &mod, base_cam
     }
 }
 
+void Graphical_sysImpl::clear_scene(base_painter *pntr)
+{
+    pntr->clear_scene();
+}
+
+

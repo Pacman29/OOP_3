@@ -1,7 +1,7 @@
 #ifndef PAINTER_ERROR
 #define PAINTER_ERROR
 #include "base_error/base_error.h"
-namespace painer_error
+namespace painter_error
 {
 class pix_null : public base_error
 {
