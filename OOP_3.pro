@@ -99,4 +99,5 @@ FORMS    += mainwindow.ui
 
 DISTFILES += \
     data.txt \
-    UML.EAP
+    UML.EAP \
+    oop3.EAP
